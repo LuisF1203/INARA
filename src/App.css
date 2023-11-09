@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+body{
+    font-family: 'Kanit', sans-serif;
+}
+/* Dentro de tu hoja de estilos CSS o en línea */
+@keyframes slideRightToLeft {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Agrega la clase de animación */
+  .animate-slide-right-to-left {
+    animation: slideRightToLeft 2s linear infinite;
+  }
+  
