@@ -3,9 +3,9 @@ import React, { createContext, useState, useEffect } from 'react';
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // Inicializa el estado del carrito con los datos de sessionStorage o con un array vacío
+  // Inicializa el estado del carrito con los datos de localStorage o con un array vacío
   const [cart, setCart] = useState(() => {
-    const savedCart = sessionStorage.getItem('cart');
+    const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
@@ -27,20 +27,25 @@ export const CartProvider = ({ children }) => {
         newCart = [...prevCart, { ...product, quantity }];
       }
       
-      // Actualiza el sessionStorage con el nuevo estado del carrito
-      sessionStorage.setItem('cart', JSON.stringify(newCart));
+      // Actualiza el localStorage con el nuevo estado del carrito
+      localStorage.setItem('cart', JSON.stringify(newCart));
 
       return newCart;
     });
-    console.log(sessionStorage.getItem('cart'))
+    console.log(localStorage.getItem('cart'))
     console.log(cart)
+    document.getElementById("SuccessProductAdded").style.display="flex";
+    setTimeout(() => {
+        document.getElementById("SuccessProductAdded").style.display="none";
+    }, 4000);
+    
   };
 
   // Remueve un producto del carrito
   const removeFromCart = (productId) => {
     setCart((prevCart) => {
       const newCart = prevCart.filter((item) => item.id !== productId);
-      sessionStorage.setItem('cart', JSON.stringify(newCart));
+      localStorage.setItem('cart', JSON.stringify(newCart));
       return newCart;
     });
   };
@@ -51,7 +56,7 @@ export const CartProvider = ({ children }) => {
       const newCart = prevCart.map((item) => 
         item.id === productId ? { ...item, quantity: quantity } : item
       );
-      sessionStorage.setItem('cart', JSON.stringify(newCart));
+      localStorage.setItem('cart', JSON.stringify(newCart));
       return newCart;
     });
   };
@@ -59,7 +64,7 @@ export const CartProvider = ({ children }) => {
   // Limpia el carrito
   const clearCart = () => {
     setCart([]);
-    sessionStorage.removeItem('cart');
+    localStorage.removeItem('cart');
   };
 
   // El valor que el contexto pasará a los componentes consumidores

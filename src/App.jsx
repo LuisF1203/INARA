@@ -4,8 +4,10 @@ import { Routes, Route } from "react-router-dom";
 import { CartProvider } from './context/CartContext'; // Asegúrate de que la ruta aquí sea correcta
 import {
   Home,
-  NotFound,
   Product,
+  Cart,
+  NotFound,
+  PayExample
 } from "./views";
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:pr/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/pay" element={<PayExample />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </CartProvider>

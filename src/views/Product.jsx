@@ -2,8 +2,11 @@ import React, { useContext } from 'react';
 import { useParams} from "react-router-dom";
 import Layout from "../components/Layout";
 import { CartContext ,CartProvider} from '../context/CartContext';
-import {MdOutlineLocalShipping,MdOutlineAssignmentReturn,MdOutlinePayment,MdOutlinePersonSearch} from "react-icons/md"
+import {MdOutlineLocalShipping,MdOutlineAssignmentReturn,MdOutlinePayment,MdOutlinePersonSearch,MdFavorite} from "react-icons/md"
+import {AiOutlineCheckCircle} from "react-icons/ai"
+import { useState, useEffect } from 'react';
 function Product(){
+    const [isFavorite, setIsFavorite] = useState(false);
     const { pr } = useParams();
     const { id } = useParams();
 
@@ -23,6 +26,35 @@ function Product(){
         addToCart(product, 1); // añade 1 cantidad del producto al carrito
     };
 
+    
+
+    // Carga inicial para verificar si el producto está en favoritos
+    useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        setIsFavorite(favorites.some(favorite => favorite.id === id));
+    }, [id]);
+
+    // Maneja el evento de añadir a favoritos
+    const toggleFavorite = () => {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        if (isFavorite) {
+            // Remover de favoritos
+            const filteredFavorites = favorites.filter(favorite => favorite.id !== id);
+            localStorage.setItem('favorites', JSON.stringify(filteredFavorites));
+            setIsFavorite(false);
+        } else {
+            // Agregar a favoritos
+            const newFavorite = {
+                id: id,
+                name: 'Collar elástico verde con acero y nácar TOUS Instint WEITT',
+                price: 3750,
+                color: 'Piedra',
+                // Añade aquí más detalles si es necesario
+            };
+            localStorage.setItem('favorites', JSON.stringify([...favorites, newFavorite]));
+            setIsFavorite(true);
+        }
+    };
 
     return(
         <Layout>
@@ -58,10 +90,17 @@ function Product(){
                             </div>
                         </div>
 
+                        <div className='flex mt-10'>
+                            <button onClick={handleAddToCart}  className=" bg-black text-white p-2 hover:bg-[#2c2c2c]">Añadir al carrito</button>
+                            <button onClick={toggleFavorite} className={isFavorite?'mt-auto mb-auto ml-5 text-[#e73737]':'mt-auto mb-auto ml-5 text-[#929292]'}><MdFavorite/></button>
+                        </div>
 
 
 
-                        <button onClick={handleAddToCart}  className="mt-10 bg-black text-white p-2 hover:bg-[#2c2c2c]">Añadir al carrito</button>
+                        <div id='SuccessProductAdded' className='hidden text-xs text-green-700 mt-5 w-48'>
+                            <AiOutlineCheckCircle className='m-auto'/>
+                            <p className='m-auto'>Producto agregado al carrito</p>
+                        </div>
                         
                         <label htmlFor="code" className="flex border-2 border-[#c6c6c6] rounded-md w-[60%] mt-10">
                             <p className="bg-gray-300 p-1 text-xs w-[40%] rounded-md ">Código de descuento</p>

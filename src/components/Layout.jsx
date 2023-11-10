@@ -2,8 +2,8 @@ import logo from "../assets/INARA.png"
 import {AiOutlineShoppingCart} from "react-icons/ai"
 
 function Layout({children}){
-        // Obtener el carrito del sessionStorage y parsearlo a un array
-        const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+        // Obtener el carrito del localStorage y parsearlo a un array
+        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
         // Calcular la cantidad de productos en el carrito
         // Si cada item tiene una cantidad, se debe sumar, de lo contrario, usar cartItems.length
@@ -26,7 +26,7 @@ function Layout({children}){
                             <p className="bg-red-500 text-center w-4 h-4 rounded-xl text-white flex justify-center absolute left-4 text-xs top-[-7px]">
                                 {cartCount}
                             </p>
-                            <a href="#" className="hover:border-b-black hover:border-b-2"><AiOutlineShoppingCart size={15}/></a>
+                            <a href="/cart" className="hover:border-b-black hover:border-b-2"><AiOutlineShoppingCart size={15}/></a>
                         </li>
                     </ul>
                 </div>
