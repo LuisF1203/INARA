@@ -15,7 +15,7 @@ function Cart() {
   const [loading, setLoading] = useState(false);
 
 
-  initMercadoPago('APP_USR-cf825ee3-52e4-4c91-ba45-5e83a2688c73');
+  initMercadoPago('APP_USR-b532ca98-14d4-4c94-a7b4-fa87b3f5881b');
 
   const createPreference = async (product) => {
     console.log(product)
