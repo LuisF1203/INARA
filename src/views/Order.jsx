@@ -54,10 +54,10 @@ const Order = () => {
 
   return (
     
-    <>
+    <div className='main-order'>
     {orderStatus!=""?
     <>
-        <div>
+        <div className='order-main'>
       <div className='noise-mask'></div>
         <div className='bus'>
           <div className='bus-bod-top'>
@@ -159,7 +159,7 @@ const Order = () => {
 
 
 
-</>
+</div>
 
 
 

@@ -14,8 +14,16 @@ $outline: 2px solid $darkest-purple;
 
 $window-animate-time: 3s;
 
-body {
+
+
+.main-order{
   background-color: $background;
+  overflow: hidden;
+  animation: bg 20s infinite;
+  height: 100vh;
+}
+
+body{
   overflow: hidden;
   animation: bg 20s infinite;
 }
