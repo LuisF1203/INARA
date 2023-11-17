@@ -68,7 +68,7 @@ function Home(){
                 :
                 products.map((el) => (
                     <a href={"/"+el.id} className="relative overflow-hidden"  key={el.id}>
-                        <img className="object-cover hover:scale-105 duration-150 cursor-pointer" src={el.data.bgImg} alt="" />
+                        <img className="object-cover hover:scale-105 w-full duration-150 cursor-pointer" src={el.data.bgImg} alt="" />
                         <h1 className="absolute top-[70%] text-4xl left-4 font-bold ">{el.id}</h1>
                         <p  className="absolute top-[80%] left-4">visitar</p>
                     </a>

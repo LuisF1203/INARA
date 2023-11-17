@@ -1,0 +1,607 @@
+@import "http://compass-style.org/reference/compass/css3/";
+
+$background: rgb(10, 10, 36);
+$lightest-yellow: rgb(230, 213, 191);
+$light-purple: rgb(231, 181, 116);
+$purple: rgb(224, 137, 23);
+$dark-purple: rgb(114, 71, 15);
+$darkest-purple: white;
+$light: #ffffff;
+
+// $noise-transparent: url('http://api.thumbr.it/whitenoise-361x370.png?background=48507f00&noise=272b4a&density=2&opacity=40');
+
+$outline: 2px solid $darkest-purple;
+
+$window-animate-time: 3s;
+
+body {
+  background-color: $background;
+  overflow: hidden;
+  animation: bg 20s infinite;
+}
+
+@keyframes bg {
+    0%{
+
+        background-color: $background;
+    }
+    50%{
+        background-color: rgb(173, 173, 137);
+    }
+    100%{
+        background-color: $background;
+    }
+    
+}
+
+
+.noise-mask {
+  width: 100vw;
+  height: 100vh;
+  // background-image: $noise-transparent;
+  z-index: 10;
+  position: absolute;
+}
+.road {
+  width: 120%;
+  height: 2px;
+  background-color: $darkest-purple;
+  top: 370px;
+  left: 00px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+.bus {
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+  top: 100px;
+  animation: bus-bounce 0.75s linear infinite;
+}
+.dashboard {
+  background-color: $purple;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border: $outline;
+  height: 95px;
+  width: 80px;
+  top: 45px;
+  position: absolute;
+  left: 80px;
+  z-index: 2;
+  transform: skew(-7deg);
+  z-index: 4;
+}
+.cabin {
+  background-color: $purple;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 30px;
+  border: $outline;
+  border-bottom: 0;
+  height: 95px;
+  width: 410px;
+  top: 45px;
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+.chassy-front-top {
+  width: 450px;
+  position: absolute;
+  right: 0;
+  height: 60px;
+  top: 140px;
+  border-top-left-radius: 30px;
+  background-color: $purple;
+  // background-color: #656FAF;
+  border: $outline;
+  // border-top: 2px solid $purple;
+  z-index: 3;
+}
+.chassy-front-bottom {
+  width: 450px;
+  position: absolute;
+  margin: 0 auto;
+  height: 30px;
+  top: 200px;
+  // left: 0;
+  right: 0;
+  background-color: $dark-purple;
+  //background-color: #656faf;
+  border: $outline;
+  z-index: 3;
+}
+.chassy-back-top {
+  width: 500px;
+  position: absolute;
+  height: 65px;
+  top: 140px;
+  right: 0;
+  border: $outline;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 2px;
+  background-color: $purple;
+  z-index: 2;
+}
+.chassy-back-bottom {
+  width: 50px;
+  position: absolute;
+  // margin: 0 auto;
+  height: 20px;
+  top: 205px;
+  // left: 0;
+  left: 0px;
+  border: $outline;
+  border-top-right-radius: 18px;
+  background-color: $purple;
+  z-index: 1;
+}
+.wheel-well-front {
+  width: 75px;
+  position: absolute;
+  left: 75px;
+  height: 35px;
+  top: 195px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: $light-purple;
+  border: $outline;
+  z-index: 4;
+}
+.wheel-well-rear {
+  width: 75px;
+  position: absolute;
+  right: 55px;
+  height: 38px;
+  top: 192px;
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+  background-color: $light-purple;
+  border: $outline;
+  z-index: 4;
+}
+.wheel {
+  height: 60px;
+  width: 60px;
+  display: block;
+  border-radius: 100px;
+  border: $outline;
+  position: absolute;
+  top: 200px;
+}
+.right-wheel {
+  @extend .wheel;
+  background-color: $darkest-purple;
+  z-index: 0;
+}
+.left-wheel {
+  @extend .wheel;
+  background-color: $dark-purple;
+  z-index: 5;
+}
+.wheel-left-front {
+  @extend .left-wheel;
+  left: 83px;
+  animation: wheel-bounce 0.8s infinite ease-in-out;
+}
+.wheel-left-rear {
+  @extend .left-wheel;
+  right: 62px;
+  animation: rear-wheel-bounce 2s infinite ease-in-out;
+}
+.wheel-right-front {
+  @extend .right-wheel;
+  left: 35px;
+}
+.wheel-right-rear {
+  @extend .right-wheel;
+  right: 105px;
+}
+.bumper {
+  width: 60px;
+  position: absolute;
+  height: 20px;
+  top: 215px;
+  left: -10px;
+  border: $outline;
+  border-radius: 5px;
+  background-color: $dark-purple;
+  z-index: 10;
+  animation: bumper-move 0.7s ease-in-out infinite;
+}
+.hubcap {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  background-color: $darkest-purple;
+  border-radius: 100px;
+  position: relative;
+  border: $outline;
+  left: 13px;
+  top: 13px;
+  z-index: 6;
+}
+.dashboard-window {
+  height: 50px;
+  width: 72px;
+  border: $outline;
+  background-color: $light-purple;
+  z-index: 6;
+  position: absolute;
+  margin: 0;
+  top: 84px;
+  transform: skew(-7deg);
+  left: 81px;
+  @extend .window-background-4;
+  &:after {
+    position: relative;
+    content: "";
+    height: 50px;
+    background-color: $darkest-purple;
+    width: 2px;
+    top: 0px;
+    left: 34px;
+    display: block;
+    z-index: 7;
+  }
+}
+.dashboard-transom {
+  height: 25px;
+  width: 70px;
+  border: $outline;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: $light-purple;
+  z-index: 6;
+  position: absolute;
+  margin: 0;
+  top: 53px;
+  transform: skew(-7deg);
+  left: 88px;
+}
+.cabin-window {
+  height: 50px;
+  width: 50px;
+  border: $outline;
+  border-radius: 2px;
+  background-color: $light-purple;
+  z-index: 6;
+  position: absolute;
+  margin: 0;
+  top: 84px;
+  &:after {
+    position: relative;
+    content: "";
+    height: 2px;
+    background-color: $darkest-purple;
+    width: 50px;
+    top: 20px;
+    display: block;
+    z-index: 7;
+  }
+  // background: linear-gradient(-45deg, $light-purple 0%, $light-purple 50%, $lightest-yellow 51%, $lightest-yellow 100%);
+  // background-size: 200% 200%;
+  // animation: window-light 2s ease infinite;
+}
+.window-background-1 {
+  background: linear-gradient(
+    -45deg,
+    $light-purple 0%,
+    $light-purple 50%,
+    $lightest-yellow 51%,
+    $lightest-yellow 100%
+  );
+  background-size: 200% 200%;
+  animation: window-light $window-animate-time ease infinite;
+}
+.window-background-2 {
+  background: linear-gradient(
+    135deg,
+    $light-purple 0%,
+    $light-purple 50%,
+    $lightest-yellow 51%,
+    $lightest-yellow 100%
+  );
+  background-size: 200% 200%;
+  animation: window-light $window-animate-time ease infinite;
+}
+.window-background-3 {
+  background: linear-gradient(
+    135deg,
+    $light-purple 0%,
+    $light-purple 20%,
+    $lightest-yellow 21%,
+    $lightest-yellow 70%,
+    $light-purple 71%,
+    $light-purple 100%
+  );
+  background-size: 200% 200%;
+  animation: window-light $window-animate-time ease infinite;
+}
+.window-background-4 {
+  background: linear-gradient(
+    135deg,
+    $lightest-yellow 0%,
+    $lightest-yellow 30%,
+    $light-purple 31%,
+    $light-purple 55%,
+    $lightest-yellow 56%,
+    $lightest-yellow 100%
+  );
+  background-size: 200% 200%;
+  animation: window-light $window-animate-time ease infinite;
+}
+.window-1 {
+  @extend .cabin-window;
+  @extend .window-background-2;
+  left: 180px;
+}
+.window-2 {
+  @extend .cabin-window;
+  background-color: $lightest-yellow;
+  left: 240px;
+}
+.window-3 {
+  @extend .cabin-window;
+  @extend .window-background-1;
+  left: 300px;
+  //@include transition-delay(2s);
+}
+.window-4 {
+  @extend .cabin-window;
+  @extend .window-background-2;
+  left: 360px;
+}
+.window-5 {
+  @extend .cabin-window;
+  @extend .window-background-3;
+  left: 420px;
+}
+.grill {
+  width: 40px;
+  height: 35px;
+  background-color: $dark-purple;
+  position: absolute;
+  top: 165px;
+  z-index: 7;
+  border: $outline;
+  border-radius: 6px;
+}
+.grill-bar {
+  height: 2px;
+  background-color: $darkest-purple;
+  width: 100%;
+  position: relative;
+}
+.grill-bar-1 {
+  @extend .grill-bar;
+  top: 6px;
+}
+.grill-bar-2 {
+  @extend .grill-bar;
+  top: 12px;
+}
+.grill-bar-3 {
+  @extend .grill-bar;
+  top: 18px;
+}
+.grill-bar-4 {
+  @extend .grill-bar;
+  top: 24px;
+}
+.rock {
+  width: 8px;
+  height: 6px;
+  border: $outline;
+  border-bottom: 0;
+  border-radius: 10px;
+  position: absolute;
+  top: 365px;
+  left: -20%;
+  background-color: $background;
+}
+.rock-1 {
+  @extend .rock;
+  animation: rock-move-1 3s linear infinite;
+}
+.rock-2 {
+  @extend .rock;
+  animation: rock-move-2 2.5s linear infinite;
+}
+.lamp-1 {
+  position: relative;
+  top: 235px;
+  left: -20%;
+  animation: lamp-move-1 4s linear infinite;
+}
+.lamp-2 {
+  position: absolute;
+  top: 245px;
+  left: -20%;
+  animation: lamp-move-2 8s linear infinite;
+}
+.lamp-base {
+  background-color: transparent;
+  height: 125px;
+  width: 15px;
+  border: $outline;
+  border-bottom: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  position: relative;
+}
+.lamp-post {
+  position: absolute;
+  top: -171px;
+  left: 8px;
+  border: $outline;
+  border-right: 0;
+  border-bottom: 0;
+  height: 170px;
+  width: 110px;
+  border-top-left-radius: 50px;
+  z-index: 1;
+}
+.lamp-bulb {
+  height: 10px;
+  width: 50px;
+  background-color: $light;
+  position: absolute;
+  top: -169px;
+  left: 65px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.lamp-light {
+  border-bottom: 290px solid rgba(255, 255, 255, 0.2);
+  border-left: 20px solid transparent;
+  border-right: 110px solid transparent;
+  height: 0;
+  width: 50px;
+  position: absolute;
+  top: -160px;
+  left: 45px;
+  z-index: 10;
+}
+.mirror-rail {
+  width: 114px;
+  height: 65px;
+  background-color: transparent;
+  border-radius: 10px;
+  position: absolute;
+  display: block;
+  top: 75px;
+  left: 62px;
+  border: $outline;
+  z-index: 3;
+}
+.mirror {
+  width: 13px;
+  height: 42px;
+  background-color: $dark-purple;
+  border: $outline;
+  position: absolute;
+  top: 87px;
+  z-index: 8;
+}
+.left-mirror {
+  @extend .mirror;
+  left: 170px;
+}
+.right-mirror {
+  @extend .mirror;
+  left: 54px;
+}
+
+@keyframes lamp-move-1 {
+  0% {
+    left: -20%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@keyframes lamp-move-2 {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 180%;
+  }
+}
+@keyframes rock-move-1 {
+  0% {
+    left: -0%;
+  }
+  99% {
+    left: 130%;
+  }
+  100% {
+    left: -20%;
+  }
+}
+// @keyframes rock-move-2 {
+//   0% { left:-20%; }
+//   99% { left: 110%; }
+//   100% { left:0%; }
+// }
+@keyframes bumper-move {
+  0% {
+    top: 215px;
+  }
+  25% {
+    top: 216px;
+  }
+  50% {
+    top: 215px;
+  }
+  75% {
+    top: 214px;
+  }
+  100% {
+    top: 215px;
+  }
+}
+@keyframes bus-bounce {
+  0% {
+    top: 100px;
+  }
+  20% {
+    top: 99px;
+  }
+  40% {
+    top: 100px;
+  }
+  75% {
+    top: 98px;
+  }
+  100% {
+    top: 100px;
+  }
+}
+@keyframes wheel-bounce {
+  0% {
+    top: 201px;
+  }
+  25% {
+    top: 200px;
+  }
+  50% {
+    top: 199px;
+  }
+  75% {
+    top: 200px;
+  }
+  100% {
+    top: 201px;
+  }
+}
+@keyframes rear-wheel-bounce {
+  0% {
+    top: 200px;
+  }
+  48% {
+    top: 199px;
+  }
+  50% {
+    top: 198px;
+  }
+  52% {
+    top: 199px;
+  }
+  100% {
+    top: 200px;
+  }
+}
+@keyframes window-light {
+  0% {
+    background-position: 0% 72%;
+  }
+  50% {
+    background-position: 100% 29%;
+  }
+  100% {
+    background-position: 0% 72%;
+  }
+}
