@@ -24,7 +24,7 @@ function Cart() {
 
   initMercadoPago('APP_USR-b532ca98-14d4-4c94-a7b4-fa87b3f5881b');
 
-  const createPreference = async (product,uid) => {
+  const createPreference = async (product,uid,order) => {
     console.log(product)
     try {
       //https://inara-server.onrender.com/create_preference
@@ -33,6 +33,7 @@ function Cart() {
         price: product.price,
         quantity: product.quantity,
         id: uid,
+        order:order
       });
       
       console.log(response.data)
@@ -104,7 +105,7 @@ function Cart() {
       const docRef = await addDoc(collection(db, "orders"), orderDetails);
       console.log("Pedido registrado con ID: ", docRef.id);
 
-      const id = await createPreference(newProduct,docRef.id);
+      const id = await createPreference(newProduct,docRef.id,orderDetails);
       if (id) {
         setPreferenceId(id);
       }

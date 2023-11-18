@@ -21,6 +21,7 @@ function PaymentSuccess(){
                     // Aquí puedes manejar los datos del documento como necesites
                 } else {
                     console.log("No se encontró ningún documento!");
+                    window.open("/","_self")
                 }
             } catch (error) {
                 console.error("Error al obtener el documento:", error);
@@ -50,11 +51,11 @@ function PaymentSuccess(){
     }
     return(
         <Layout>
-            <div className="h-[100vh] ">
+            <div className="h-[100vh] text-center">
                 <h1 className="text-center font-bold text-4xl">FELICIDADES</h1>
                 <br />
-                <h2 className="text-center text-xl">Tu pago se completó correctamente</h2>
-                <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-[50%] m-auto" role="alert">
+                <h2 className="text-center text-xl mb-20">Tu pago se completó correctamente</h2>
+                <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-[50%] m-auto mb-20" role="alert">
                     <div className="flex">
                         <div className="py-1">
                             <div>
@@ -64,14 +65,14 @@ function PaymentSuccess(){
                             </div>
                         </div>
                         <div>
-                            <p className="font-bold">Status: {orderStatus} </p>
+                            <p className="font-bold text-left">Status: {orderStatus} </p>
                             <p className="text-sm">Revisa tu correo electronico para más información sobre tu pedido</p>
                         </div>
                     </div>
                 </div>
 
-
-
+                <br />
+                <a href={"/order/"+id} className="m-auto bg-blue-500 text-white p-2 mt-10 animate-pulse">Rastrear pedido</a>
                 
 
 

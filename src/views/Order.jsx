@@ -123,7 +123,9 @@ const Order = () => {
     
     
     <div className='fixed z-50 right-0 left-0 bottom-40'>
-                    <div className='relative w-[90%] bg-gray-200 rounded-full h-7 m-auto'>
+      {orderStatus=="in process" ?<h2 className='text-center mb-10 text-2xl text-white'>Tu orden aun esta en proceso</h2>:
+      <>
+      <div className='relative w-[90%] bg-gray-200 rounded-full h-7 m-auto'>
                         <div className={`absolute bg-green-300 h-full transition-width duration-500 ease-in-out rounded-full`} style={{ width: getProgressBarWidth() }}></div>
                         <div className='flex justify-between absolute top-[-10px] left-0 right-0 px-4 w-full'> {/* Ajuste la posición según sea necesario */}
                             <div className={`w-12 h-12 rounded-full flex justify-center items-center ${getIconColor("created")}`} style={{ zIndex: 2 }}>
@@ -145,6 +147,10 @@ const Order = () => {
                         </div>
                     </div>
                     <p className='text-center text-white mt-10 text-sm'>ORDEN: <br /> <span className='text-xl'>{id}</span></p>
+      
+      </>
+      }
+
                 </div>
 
     
