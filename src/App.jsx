@@ -9,7 +9,8 @@ import {
   Cart,
   NotFound,
   PaymentSuccess,
-  Order
+  Order,
+  Admin
 } from "./views";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/pay-success/:id" element={<PaymentSuccess />} />
         <Route path="/order/:id" element={<Order />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </CartProvider>

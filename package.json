@@ -21,7 +21,9 @@
     "react-icons": "^4.11.0",
     "react-loading-skeleton": "^3.3.1",
     "react-router-dom": "^6.18.0",
+    "react-slide-button": "^2.0.0",
     "react-useanimations": "^2.10.0",
+    "rn-slide-button": "^1.0.2",
     "sass": "^1.69.5"
   },
   "devDependencies": {
